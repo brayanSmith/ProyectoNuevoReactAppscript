@@ -1,19 +1,30 @@
 //<script type="text/jsx">
 
 
-    function FormularioRegistro() {
-    
-    
-      const guardarFormulario = (datosFormulario) => {
-        console.log(datosFormulario);
-      }
-    
-      return (
-        <div className="px-20">
-          <h2 className="text-center font-bold text-xl my-6">Formulario de Registro</h2>
-          <Form
-            onFinish={guardarFormulario}
-            layout="vertical">
+function FormularioRegistro() {
+
+  const [form] = Form.useForm();
+
+  const guardarFormulario = (datosFormulario) => {
+    console.log(datosFormulario);
+
+    const id = v4();
+
+    google.script.run.withSuccessHandler(resp => {
+      console.log(resp.titulo);
+      form.resetFields();//si el registro fue exitoso se resetea el formulario
+    }).guardarUsuario({ id, ...datosFormulario });
+  }
+
+  return (
+    <div className="px-20">
+      <h2 className="text-center font-bold text-xl my-6">Formulario de Registro</h2>
+      <Form
+        form={form}
+        onFinish={guardarFormulario}
+        layout="vertical">
+
+
     
             <Item
               name="nombreCompleto"
