@@ -39,3 +39,14 @@ function actualizarUsuario(id, datos) {
   }
 }
 
+function eliminarUsuario(id){
+  const sheetUsuarios = obtenerSheet(env_().SH_REGISTRO_USUARIOS);
+
+  const usuarioAEliminar = _read(sheetUsuarios, id);//Obtenemos el usuario
+  sheetUsuarios.deleteRow(usuarioAEliminar.row);
+  
+  return {
+    titulo: "Usuario Eliminado! ",
+    descripcion: "Remivido con éxito.",
+  };
+}
