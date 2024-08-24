@@ -2,10 +2,9 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
   <?!= include('frontend/config/cdn') ?>
 </head>
 
@@ -22,9 +21,13 @@
   <!-- rutas -->
   <?!= include('frontend/routes/Routes') ?>
 
+  <!-- helpers -->
+  <?!= include('frontend/helpers/modalesNotificaciones') ?>
+
 
   <!-- vistas -->
   <?!= include('frontend/views/Inicio') ?>
+  <?!= include('frontend/views/usuarios/Usuarios') ?>
   <?!= include('frontend/views/formularios/FormularioRegistro') ?>
   <?!= include('frontend/components/Header') ?>
 
